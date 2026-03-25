@@ -197,11 +197,6 @@ public class UserManagementService implements IUserManagementService {
 
             User verifyIfUserExist = userRepository.VerifyIfEmailExist(email);
 
-            InfoErrors<TokenOutValue> tokenOut = tokenGenerator.generatorTokenUser(verifyIfUserExist);
-
-            if(!tokenOut.IsSuccess)
-                return ResultService.Fail(tokenOut.Message);
-
             if(verifyIfUserExist != null){
                 if(verifyIfUserExist.getPasswordHash() != null)
                     return ResultService.Fail(new CodeReturn<>(false, "user already exist"));
@@ -209,7 +204,12 @@ public class UserManagementService implements IUserManagementService {
                 UUID uuid_user_id = UUID.randomUUID();
                 User userCreate = new User(uuid_user_id, email);
 
-                var userData = userRepository.create(userCreate);
+                User userData = userRepository.create(userCreate);
+
+                InfoErrors<TokenOutValue> tokenOut = tokenGenerator.generatorTokenUser(userCreate);
+
+                if(!tokenOut.IsSuccess)
+                    return ResultService.Fail(tokenOut.Message);
 
                 var userMap = modelMapper.map(userData, UserDTO.class);
 
@@ -217,6 +217,11 @@ public class UserManagementService implements IUserManagementService {
 
                 return ResultService.Ok(new CodeReturn<>(true, userMap));
             }
+
+            InfoErrors<TokenOutValue> tokenOut = tokenGenerator.generatorTokenUser(verifyIfUserExist);
+
+            if(!tokenOut.IsSuccess)
+                return ResultService.Fail(tokenOut.Message);
 
             var userDTO = modelMapper.map(verifyIfUserExist, UserDTO.class);
 

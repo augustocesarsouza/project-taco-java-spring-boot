@@ -45,7 +45,7 @@ public class Configurations {
         httpSecurity.csrf(AbstractHttpConfigurer::disable)
                 .cors(cors -> cors.configurationSource(request -> {
                     var corsConfig = new org.springframework.web.cors.CorsConfiguration();
-                    corsConfig.addAllowedOrigin(frontendUrl);  // Permitir apenas o frontend
+                    corsConfig.addAllowedOrigin(frontendUrl); // Permitir apenas o frontend
                     corsConfig.addAllowedMethod(HttpMethod.GET);
                     corsConfig.addAllowedMethod(HttpMethod.POST);
                     corsConfig.addAllowedMethod(HttpMethod.PUT);
