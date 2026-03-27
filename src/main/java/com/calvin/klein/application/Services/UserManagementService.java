@@ -23,6 +23,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 
+import java.time.format.DateTimeFormatter;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Random;
@@ -262,7 +263,8 @@ public class UserManagementService implements IUserManagementService {
 
             String birthDateStr = userUpdateValidatorDTO.getBirthDate();
             if(birthDateStr != null && !birthDateStr.isEmpty()){
-                LocalDate dateOfBirth = LocalDate.parse(birthDateStr);
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                LocalDate dateOfBirth = LocalDate.parse(birthDateStr, formatter);
                 user.setDateOfBirth(dateOfBirth);
             }
 

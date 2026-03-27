@@ -17,6 +17,8 @@ public class UserUpdateValidatorDTO {
     @Size(min = 36, message = "id should have at last 36 characters")
     @JsonProperty("id")
     private String Id;
+    @JsonProperty("email")
+    private String Email;
     @JsonProperty("firstName")
     private String FirstName;
     @JsonProperty("lastName")
@@ -30,7 +32,8 @@ public class UserUpdateValidatorDTO {
     @JsonProperty("birthDate")
     private String BirthDate;
 
-    public UserUpdateValidatorDTO(String firstName, String lastName, String cpf, String gender, String cellPhone, String birthDate) {
+    public UserUpdateValidatorDTO(String email, String firstName, String lastName, String cpf, String gender, String cellPhone, String birthDate) {
+        Email = email;
         FirstName = firstName;
         LastName = lastName;
         Cpf = cpf;
