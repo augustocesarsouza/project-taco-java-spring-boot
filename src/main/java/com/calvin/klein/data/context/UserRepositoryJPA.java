@@ -9,6 +9,8 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.UUID;
 
+
+
 @Repository
 public interface UserRepositoryJPA extends JpaRepository<User, UUID> {
     @Query("SELECT new com.calvin.klein.domain.entities." +
@@ -16,7 +18,7 @@ public interface UserRepositoryJPA extends JpaRepository<User, UUID> {
             "FROM User AS x " +
             "WHERE x.Id = :userId")
     User GetInfoUser(UUID userId);
-
+    
     @Query("SELECT new com.calvin.klein.domain.entities." +
             "User(x.Id, null, x.Name, x.LastName, null, x.Cpf, null, x.Telephone, x.Email, x.PasswordHash, null, null) " +
             "FROM User AS x " +
