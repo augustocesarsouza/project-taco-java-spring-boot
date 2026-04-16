@@ -3,7 +3,7 @@ package com.calvin.klein.data.repositories;
 import org.springframework.stereotype.Component;
 import com.calvin.klein.domain.entities.Address;
 import com.calvin.klein.data.context.AddressRepositoryJPA;
-
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.calvin.klein.domain.repositories.IAddressRepository;
 
@@ -21,5 +21,13 @@ public class AddressRepository implements IAddressRepository {
     @Override
     public Address GetInfoAddress(UUID addressId) {
         return addressRepositoryJPA.GetInfoAddress(addressId);
+    }
+
+    @Override
+    public Address create(Address address) {
+        if(address == null)
+            return null;
+
+        return addressRepositoryJPA.save(address);
     }
 }

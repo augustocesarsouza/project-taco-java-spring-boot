@@ -7,6 +7,8 @@ import lombok.Setter;
 import jakarta.persistence.Column;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.UUID;
+import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Getter
 @Setter
@@ -17,6 +19,14 @@ public class Address {
     @Column(name = "address_id")
     @JsonProperty("id")
     private UUID Id;
+
+    @Column(name = "user_id")
+    @JsonProperty("userId")
+    private UUID UserId;
+    
+    @ManyToOne
+    @JoinColumn(name = "user_id", insertable = false, updatable = false)
+    private User User;
 
     @Column(name = "country")
     @JsonProperty("country")
@@ -54,9 +64,28 @@ public class Address {
     @JsonProperty("recipientsName")
     private String RecipientsName;
 
+    public Address(){
+    }
+
     public Address(UUID id, String country, String cep, String street, String numberhouse,
         String complemenet, String neighborhood, String city, String stateName, String recipientsName) {
         Id = id;
+        Country = country;
+        Cep = cep;
+        Street = street;
+        Numberhouse = numberhouse;
+        Complemenet = complemenet;
+        Neighborhood = neighborhood;
+        City = city;
+        StateName = stateName;
+        RecipientsName = recipientsName;
+    }
+
+    public Address(UUID id, UUID userId, User user, String country, String cep, String street, String numberhouse,
+        String complemenet, String neighborhood, String city, String stateName, String recipientsName) {
+        Id = id;
+        UserId = userId;
+        User = user;
         Country = country;
         Cep = cep;
         Street = street;
