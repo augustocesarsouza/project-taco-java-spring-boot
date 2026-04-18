@@ -17,7 +17,7 @@ import java.util.Date;
 
 @Component
 public class TokenGenerator implements ITokenGenerator {
-    @Value("${JWT-SECRET-KEY}")
+    @Value("${JWT_SECRET_KEY}")
     private String secretKey;
 
     @Override
