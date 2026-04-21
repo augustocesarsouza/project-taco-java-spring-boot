@@ -41,12 +41,12 @@ public class AddressService implements IAddressService {
     @Override
     public ResultService<AddressDTO> GetInfoAddress(UUID addressId){
         try {
-            var address = addressRepository.GetInfoAddress(addressId);
+            AddressDTO addressDto = addressRepository.GetInfoAddress(addressId);
 
-            if(address == null)
+            if(addressDto == null)
                 return ResultService.Fail("not found address");
 
-            var addressDto = modelMapper.map(address, AddressDTO.class);
+            // var addressDto = modelMapper.map(address, AddressDTO.class);
             return ResultService.Ok(addressDto);
         }catch (Exception ex){
             return ResultService.Fail(ex.getMessage());
