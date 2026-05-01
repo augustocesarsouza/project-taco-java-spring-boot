@@ -9,5 +9,6 @@ import org.springframework.validation.BindingResult;
 public interface IAddressService {
     ResultService<AddressDTO> TestHere();
     ResultService<AddressDTO> GetInfoAddress(UUID addressId);
+    ResultService<AddressDTO> GetInfoAddressByUserId(UUID userId);
     ResultService<AddressDTO> create(AddressValidatorDTO addressValidatorDTO, BindingResult result);
 }

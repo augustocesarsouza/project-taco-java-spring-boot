@@ -46,6 +46,17 @@ public class AddressController {
         return ResponseEntity.badRequest().body(result);
     }
 
+    @GetMapping("/address/get-info-address-by-user-id/{userId}")
+    public ResponseEntity<ResultService<AddressDTO>> GetInfoAddressByUserId(@PathVariable String userId){
+        var result = addressService.GetInfoAddressByUserId(UUID.fromString(userId));
+
+        if(result.IsSuccess){
+            return ResponseEntity.ok(result);
+        }
+
+        return ResponseEntity.badRequest().body(result);
+    }
+
     @PostMapping("/address/create")
     public ResponseEntity<ResultService<AddressDTO>> Create(@Valid @RequestBody AddressValidatorDTO addressValidatorDTO, BindingResult resultValid){
         var result = addressService.create(addressValidatorDTO, resultValid);
