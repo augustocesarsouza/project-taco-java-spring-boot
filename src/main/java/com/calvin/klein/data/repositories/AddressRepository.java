@@ -25,6 +25,11 @@ public class AddressRepository implements IAddressRepository {
     }
 
     @Override
+    public AddressDTO GetInfoAddressByUserId(UUID userId) {
+        return addressRepositoryJPA.GetInfoAddressByUserId(userId);
+    }
+
+    @Override
     public Address create(Address address) {
         if(address == null)
             return null;

@@ -20,6 +20,14 @@ public interface AddressRepositoryJPA extends JpaRepository<Address, UUID> {
             "WHERE x.Id = :addressId")
     AddressDTO GetInfoAddress(UUID addressId);
 
+    @Query("SELECT new com.calvin.klein.application.dto." +
+            "AddressDTO(x.Id, null, new com.calvin.klein.application.dto.UserDTO(null, null, null, null, null, " +
+            "null, null, null, null, null, null, null, null, null, null, null), " +
+            "x.Country, x.Cep, x.Street, x.Numberhouse, x.Complemenet, x.Neighborhood, x.City, x.StateName, x.RecipientsName) " +
+            "FROM Address AS x " +
+            "WHERE x.UserId = :userId")
+    AddressDTO GetInfoAddressByUserId(UUID userId);
+
 }
 
 // AddressDTO(UUID id, UUID userId, UserDTO userDTO, String country, String cep, String street, String numberhouse,

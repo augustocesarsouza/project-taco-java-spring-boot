@@ -54,6 +54,21 @@ public class AddressService implements IAddressService {
     }
 
     @Override
+    public ResultService<AddressDTO> GetInfoAddressByUserId(UUID userId){
+        try {
+            AddressDTO addressDto = addressRepository.GetInfoAddressByUserId(userId);
+
+            if(addressDto == null)
+                return ResultService.Fail("not found address");
+
+            // var addressDto = modelMapper.map(address, AddressDTO.class);
+            return ResultService.Ok(addressDto);
+        }catch (Exception ex){
+            return ResultService.Fail(ex.getMessage());
+        }
+    }
+
+    @Override
     public ResultService<AddressDTO> create(AddressValidatorDTO addressValidatorDTO, BindingResult result) {
         if(addressValidatorDTO == null)
             return ResultService.Fail("error DTO Is Null");
