@@ -26,51 +26,51 @@ public class User implements UserDetails {
     @jakarta.persistence.Id
     @Column(name = "user_id")
     @JsonProperty("id")
-    private UUID Id;
+    public UUID Id;
 
     @Column(name = "login")
     @JsonProperty("login")
-    private String Login;
+    public String Login;
 
     @Column(name = "name")
     @JsonProperty("name")
-    private String Name;
+    public String Name;
 
     @Column(name = "last_name")
     @JsonProperty("lastName")
-    private String LastName;
+    public String LastName;
 
     @Column(name = "time_zone")
     @JsonProperty("timeZone")
-    private ZoneId TimeZone;
+    public ZoneId TimeZone;
 
     @Column(name = "cpf")
     @JsonProperty("cpf")
-    private String Cpf;
+    public String Cpf;
 
     @Column(name = "date_of_birth")
     @JsonProperty("dateOfBirth")
-    private LocalDate DateOfBirth;
+    public LocalDate DateOfBirth;
 
     @Column(name = "telephone")
     @JsonProperty("telephone")
-    private String Telephone;
+    public String Telephone;
 
     @Column(name = "email")
     @JsonProperty("email")
-    private String Email;
+    public String Email;
 
     @Column(name = "password_hash")
     @JsonProperty("passwordHash")
-    private String PasswordHash;
+    public String PasswordHash;
 
     @Column(name = "user_image")
     @JsonProperty("userImage")
-    private String UserImage;
+    public String UserImage;
 
     @Column(name = "gender")
     @JsonProperty("gender")
-    private String Gender;
+    public String Gender;
 
     public User() {
     }

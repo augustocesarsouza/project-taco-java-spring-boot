@@ -18,51 +18,51 @@ public class Address {
     @jakarta.persistence.Id
     @Column(name = "address_id")
     @JsonProperty("id")
-    private UUID Id;
+    public UUID Id;
 
     @Column(name = "user_id")
     @JsonProperty("userId")
-    private UUID UserId;
+    public UUID UserId;
     
     @ManyToOne
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
-    private User User;
+    public User User;
 
     @Column(name = "country")
     @JsonProperty("country")
-    private String Country;
+    public String Country;
 
     @Column(name = "cep")
     @JsonProperty("cep")
-    private String Cep;
+    public String Cep;
 
     @Column(name = "street")
     @JsonProperty("street")
-    private String Street;
+    public String Street;
 
     @Column(name = "number_house")
     @JsonProperty("numberhouse")
-    private String Numberhouse;
+    public String Numberhouse;
 
     @Column(name = "complemenet")
     @JsonProperty("complemenet")
-    private String Complemenet;
+    public String Complemenet;
 
     @Column(name = "neighborhood")
     @JsonProperty("neighborhood")
-    private String Neighborhood;
+    public String Neighborhood;
 
     @Column(name = "city")
     @JsonProperty("city")
-    private String City;
+    public String City;
 
     @Column(name = "state_name")
     @JsonProperty("stateName")
-    private String StateName;
+    public String StateName;
 
     @Column(name = "recipients_name")
     @JsonProperty("recipientsName")
-    private String RecipientsName;
+    public String RecipientsName;
 
     public Address(){
     }

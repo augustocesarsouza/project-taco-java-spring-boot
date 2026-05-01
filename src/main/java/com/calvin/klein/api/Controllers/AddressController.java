@@ -35,7 +35,7 @@ public class AddressController {
         return ResponseEntity.ok(result);
     }
 
-    @GetMapping("/address/get-info-user/{userId}")
+    @GetMapping("/address/get-info-address/{addressId}")
     public ResponseEntity<ResultService<AddressDTO>> GetInfoUser(@PathVariable String addressId){
         var result = addressService.GetInfoAddress(UUID.fromString(addressId));
 

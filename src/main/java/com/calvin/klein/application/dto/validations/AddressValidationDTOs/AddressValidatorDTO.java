@@ -48,6 +48,7 @@ public class AddressValidatorDTO {
     public AddressValidatorDTO(String country, String userId, String cep, String street, String numberhouse, String complemenet,
         String neighborhood, String city, String stateName, String recipientsName){
             this.country = country;
+            this.userId = userId;
             this.cep = cep;
             this.street = street;
             this.numberhouse = numberhouse;

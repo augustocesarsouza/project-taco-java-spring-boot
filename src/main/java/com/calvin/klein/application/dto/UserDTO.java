@@ -15,15 +15,15 @@ import java.util.UUID;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserDTO {
     public UUID id;
-    private String login;
-    private String name;
-    private String lastName;
-    private ZoneId timeZone;
-    private String cpf;
-    private LocalDate dateOfBirth;
-    private String telephone;
-    private String email;
-    private String passwordHash;
+    public String login;
+    public String name;
+    public String lastName;
+    public ZoneId timeZone;
+    public String cpf;
+    public LocalDate dateOfBirth;
+    public String telephone;
+    public String email;
+    public String passwordHash;
     public String token;
     public Integer tokenForCreation;
     public String password;
