@@ -17,7 +17,7 @@ import java.util.Date;
 
 @Component
 public class TokenGenerator implements ITokenGenerator {
-    @Value("${JWT_SECRET_KEY}")
+    @Value("${JWT-SECRET-KEY}")
     private String secretKey;
 
     @Override
@@ -25,6 +25,8 @@ public class TokenGenerator implements ITokenGenerator {
         Algorithm algorithm = Algorithm.HMAC256(secretKey);
         LocalDateTime currentUtcDateTime = LocalDateTime.now(ZoneOffset.UTC);
         LocalDateTime expires = currentUtcDateTime.plusHours(5);
+//        .plusHours(5);
+
         Date expiresDate = Date.from(expires.toInstant(ZoneOffset.UTC));
 
         if(user == null)
